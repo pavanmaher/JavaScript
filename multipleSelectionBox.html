@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<style>
+.s1
+{
+	display:inline-block;
+	height: 100px;
+	width: 110px;
+}
+div
+{
+  display:inline-block;
+  margin-top: 0;
+  height: 100px;
+}
+.s2
+{
+	display:inline-block;
+	margin-left: 20px;
+	height: 100px;
+	width: 110px;
+
+}
+button
+{
+   display: block;
+   margin-top: 20px;
+   margin-left: 20px;
+   width: 100px;
+}
+</style>
+<body>
+<select id="first" class="s1" multiple="multiple">
+<option>india</option>
+<option>pakistan</option>
+<option>nepal</option>
+<option>sri lanka</option>
+<option>bhutan</option>
+<option>bangladesh</option>
+<option>afganistan</option>
+<option>England</option>
+<option>USA</option>
+<option>UAE</option>
+<option>Africa</option>
+<option>NewZeland</option>
+<option>Austrelia</option>
+<option>China</option>
+<option>japan</option>
+<option>Indonesia</option>
+</select>
+<div>
+<button id="add">Add</button>
+<button id="remove">Remove</button>
+</div>
+<select id="second" class="s2" multiple="multiple">
+</select>
+<script>
+let s1=document.getElementById("first");
+let s2=document.getElementById("second");
+
+let b1=document.getElementById("add");
+let b2=document.getElementById("remove");
+
+b1.addEventListener("click",add);
+b2.addEventListener("click",remove);
+
+function add()
+{
+
+	let arr=[];
+	for(let i=0;i<s1.options.length;i++)
+	{
+		if(s1.options[i].selected==true)
+		{
+			s1.options[i].selected=false;
+			arr.push(s1.options[i]);	
+		}
+	}
+	for(let i=0;i<arr.length;i++)
+	{
+		s1.removeChild(arr[i]);
+	}
+	for(let i=0;i<arr.length;i++)
+	{
+		s2.appendChild(arr[i]);
+	}
+}
+
+function remove()
+{
+
+	let arr=[];
+	for(let i=0;i<s2.options.length;i++)
+	{
+		if(s2.options[i].selected==true)
+		{
+			s2.options[i].selected=false;
+			arr.push(s2.options[i]);	
+		}
+	}
+	for(let i=0;i<arr.length;i++)
+	{
+		s2.removeChild(arr[i]);
+	}
+	for(let i=0;i<arr.length;i++)
+	{
+		s1.appendChild(arr[i]);
+	}
+}
+</script>
+</body>
+</html> 
