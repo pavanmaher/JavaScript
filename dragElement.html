@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+p
+{
+  display:inline-block;
+  position: absolute;
+  left:0;
+  top:0;
+}
+</style>
+</head>
+<body>
+<p>hello</p>
+<script>
+let b=document.getElementsByTagName("p")[0];
+b.addEventListener("mousedown",stick);
+window.addEventListener("mouseup",down);
+function stick(e)
+{
+    e.preventDefault();
+	if(e.button==0)
+    {
+    	window.addEventListener("mousemove",move);
+    }
+}
+function move(e)
+{
+  if(e.buttons!=1)
+  {
+  	window.removeEventListener("mousemove",move);
+  }
+  else
+  {
+    //alert("l");
+    b.style.left=(e.pageX-20)+"px";
+    b.style.top=(e.pageY-30)+"px";
+  }
+}
+function down()
+{
+	b.style.left=0;
+    b.style.top=0;
+}
+</script>
+</body>
+</html> 
+

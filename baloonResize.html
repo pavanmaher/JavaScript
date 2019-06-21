@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p style="font-size:10px;">🎈</p>
+<script>
+let b=document.getElementsByTagName("p")[0];
+window.addEventListener("keydown",grow);
+function grow(e)
+{
+
+let s=parseInt(b.style.fontSize);
+let ns=s*10;
+ns/=100;
+if(e.key=="ArrowUp")
+{
+s+=ns;
+b.style.fontSize=s+"px";
+if(s>250)
+{
+  b.innerHTML="💥";
+  window.removeEventListener("keydown",grow);
+}
+}
+else if(e.key=="ArrowDown"&&s-ns>10)
+{
+s-=ns;
+b.style.fontSize=s+"px";
+}
+}
+</script>
+</body>
+</html> 
+
