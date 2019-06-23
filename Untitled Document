@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.ip
+{
+	margin-left:80px;
+}
+</style>
+</head>
+<body>
+<form>
+Enter a Number:
+<input type="text"></input><br>
+Result:
+<input class="ip" type="text" readOnly=true value="False"></input><br>
+
+<button style="margin-left: 200px;margin-top:30px;">Submit</button>
+<script>
+let ip=document.getElementsByTagName("input");
+let b=document.getElementsByTagName("button")[0];
+
+ip[0].addEventListener("input",check);
+b.addEventListener("click",valid);
+function check()
+{
+ let text=ip[0].value;
+ if(!isNaN(text)&&text!="")
+ {
+ 	ip[1].value="True";
+ }
+ else
+ {
+ ip[1].value="False";
+ }
+}
+
+function valid(e)
+{
+ e.preventDefault();
+ let text=ip[0].value;
+ if(!isNaN(text)&&text!="")
+ {
+ 	alert("submited");
+    ip[0].value="";
+    ip[1].value="False";
+ }
+ else
+ {
+   alert("not numeric");
+ }
+}
+</script>
+</body>
+</html> 
+
