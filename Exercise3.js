@@ -1,23 +1,28 @@
-let checkboxes=document.getElementsByClassName("parent");
-for(let i=0;i<checkboxes.length;i++)
+class Category
 {
-  checkboxes[i].addEventListener("click",selectCategory);
-}
-function selectCategory(event)
-{
+  constructor(className)
+  {
+    this.checkboxes=document.getElementsByClassName(className);
+    for(let i=0;i<this.checkboxes.length;i++)
+    {
+     this.checkboxes[i].addEventListener("click",this.selectCategory.bind(this));
+    }
+  }
+  selectCategory(event)
+  {
     if(event.currentTarget.checked==true)
     {
-      showList(event.currentTarget);
+      this.showList(event.currentTarget);
     }
     else
     {
-      hideList(event.currentTarget);
+      this.hideList(event.currentTarget);
     }
-}
-function showList(category)
-{
+  }
+  showList(category)
+  {
   
-  let items=document.getElementsByClassName(category.value);
+    let items=document.getElementsByClassName(category.value);
     let classList=document.getElementsByClassName(category.value+" hide")[0];
     classList.style.display="block";
     category.scrollIntoView(true)
@@ -25,16 +30,17 @@ function showList(category)
     {
       items[i].checked=true;
     }
-}
-function hideList(category)
-{
+  }
+  hideList(category)
+  {
   
-  let items=document.getElementsByClassName(category.value);
+    let items=document.getElementsByClassName(category.value);
     let classList=document.getElementsByClassName(category.value+" hide")[0];
     classList.style.display="none";
-    
     for(let i=0;i<items.length;i++)
     {
       items[i].checked=false;
     }
+  }
 }
+let category=new Category("parent");

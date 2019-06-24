@@ -1,33 +1,40 @@
-let input=document.getElementsByTagName("input");
-let button=document.getElementsByTagName("button")[0];
-
-input[0].addEventListener("input",check);
-button.addEventListener("click",isValid);
-function check()
+class Form
 {
- let text=input[0].value;
- if(!isNaN(text)&&text!="")
- {
- 	input[1].value="True";
- }
- else
- {
- input[1].value="False";
- } 
-}
+	constructor()
+	{
+	    this.input=document.getElementsByTagName("input");
+        this.button=document.getElementsByTagName("button")[0];
 
-function isValid(e)
-{
- e.preventDefault();
- let text=input[0].value;
- if(!isNaN(text)&&text!="")
- {
- 	alert("submited");
-    input[0].value="";
-    input[1].value="False";
- }
- else
- {
-   alert("not numeric");
- }
+        this.input[0].addEventListener("input",this.check.bind(this));
+        this.button.addEventListener("click",this.isValid.bind(this));
+    }
+    check()
+    {
+      let text=this.input[0].value;
+      if(!isNaN(text)&&text!="")
+      {
+ 	    this.input[1].value="True";
+      }
+      else
+      {
+       this.input[1].value="False";
+      } 
+    }
+
+    isValid(event)
+    {
+      event.preventDefault();
+      let text=this.input[0].value;
+      if(!isNaN(text)&&text!="")
+      {
+ 	    alert("submited");
+        this.input[0].value="";
+        this.input[1].value="False";
+      }
+      else
+      {
+        alert("not numeric");
+      }
+    }
 }
+let form=new Form();
