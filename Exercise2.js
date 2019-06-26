@@ -8,19 +8,20 @@ class Checkbox {
       );
     }
   }
+
   restrictMoreThanThreeCheckboxes(event) {
-    if (event.currentTarget.value == "none") {
+    if (event.currentTarget.value === "none") {
       for (let i = 0; i < this.days.length; i++) {
-        if (this.days[i].value != "none" && this.days[i].checked == true) {
+        if (this.days[i].value != "none" && this.days[i].checked === true) {
           this.days[i].checked = false;
         }
       }
       return false;
     }
-    if (this.days[7].checked == true) {
+    if (this.days[7].checked === true) {
       this.days[7].checked = false;
     }
-    let checkedDays = [];
+    const checkedDays = [];
     let count = 0;
     for (let i = 0; i < this.days.length; i++) {
       if (this.days[i] != event.currentTarget && this.days[i].checked == true) {
@@ -28,15 +29,16 @@ class Checkbox {
         count++;
       }
     }
-    if (count == 3) {
+    if (count === 3) {
       event.currentTarget.checked = false;
       alert(`Only 3 days can be selected.You have already selected ${
         checkedDays[0]
       }, ${checkedDays[1]} and
          ${checkedDays[2]}`);
     } else {
-      document.getElementById("demo").innerHTML = ``;
+      document.getElementById("demo").innerHTML = "";
     }
+    return true;
   }
 }
-let day = new Checkbox("input");
+new Checkbox("input");
